@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".Profile.View.ProfileActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".People.View.PeopleActivity">
         </activity>
     </application>
 
