@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AmobaPrueba</string>
+    <string name="text_welcome">Bienvenido especialista</string>
+    <string name="text_email">Dirección de email</string>
+    <string name="text_pass">Tu contraseña</string>
+    <string name="text_login">Iniciar sesión</string>
+    <string name="text_recovery">¿Olvidaste tu contraseña?</string>
+    <string name="text_error_defaul">Ocurrio un error</string>
+    <string name="text_error_null">No se permiten campos vacíos!!</string>
+    <string name="text_error_fail">Correo electronico o contraseña incorrectos</string>
+    <string name="text_logout">Sesion cerrada correctamente</string>
+    <string name="text_people">Pacientes actuales</string>
+    <string name="text_info_people">Selecciona una persona</string>
+    <string name="text_btn_ticket">Compar ticket</string>
+    <string name="text_map">Ver ubicación en Map</string>
+</resources>

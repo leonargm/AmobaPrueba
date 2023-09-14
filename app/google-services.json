@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "216929380472",
+    "project_id": "amoba-d4e09",
+    "storage_bucket": "amoba-d4e09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216929380472:android:4044e51a88cc275f20658d",
+        "android_client_info": {
+          "package_name": "com.leonargm.amobaprueba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfbSBLpU3GLlF6rdqXcgZS-SXJTFurSP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
