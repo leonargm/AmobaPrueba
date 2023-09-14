@@ -1,7 +1,6 @@
 package com.leonargm.amobaprueba.Login.Impl
 
 import android.content.Context
-import android.content.res.Resources
 import com.google.firebase.auth.FirebaseAuth
 import com.leonargm.amobaprueba.Login.Interface.LoginActivityIterator
 import com.leonargm.amobaprueba.Login.Interface.LoginActivityPresenter

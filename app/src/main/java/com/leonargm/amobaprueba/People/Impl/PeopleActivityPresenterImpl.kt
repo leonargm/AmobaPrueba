@@ -11,8 +11,16 @@ class PeopleActivityPresenterImpl(var view: PeopleActivityView) : PeopleActivity
         iterator.showPeople(data)
     }
 
+    override fun doLogout(context: Context, firebase: FirebaseAuth) {
+        iterator.doLogout(context, firebase)
+    }
+
     override fun onSuccess(data: Map<String, Any>?) {
         view.onSuccess(data)
+    }
+
+    override fun onSuccessLogout(result: String) {
+        view.onSuccessLogout(result)
     }
 
     init {

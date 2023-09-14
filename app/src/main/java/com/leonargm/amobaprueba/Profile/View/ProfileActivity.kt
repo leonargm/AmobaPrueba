@@ -3,19 +3,12 @@ package com.leonargm.amobaprueba.Profile.View
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.leonargm.amobaprueba.Login.View.LoginActivity
 import com.leonargm.amobaprueba.Profile.Impl.ProfileActivityPresenterImpl
 import com.leonargm.amobaprueba.Profile.Interface.ProfileActivityView
-import com.leonargm.amobaprueba.R
 import com.leonargm.amobaprueba.databinding.ActivityProfileBinding
 import com.squareup.picasso.Picasso
 
@@ -55,20 +48,6 @@ class ProfileActivity : AppCompatActivity(), ProfileActivityView {
         presenter = ProfileActivityPresenterImpl(this)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.logout -> {
-                presenter.doLogout(this, firebaseAuth)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
     override fun onSuccess(result: String) {
         val intent= Intent(this, LoginActivity::class.java)
         Toast.makeText(this,result, Toast.LENGTH_SHORT).show()

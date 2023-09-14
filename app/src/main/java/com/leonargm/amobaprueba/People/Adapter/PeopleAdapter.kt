@@ -1,19 +1,44 @@
 package com.leonargm.amobaprueba.People.Adapter
 
-import android.R
-import android.content.Context
-import android.widget.ArrayAdapter
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentSnapshot
-import com.leonargm.amobaprueba.databinding.ActivityPeopleBinding
+import com.leonargm.amobaprueba.databinding.PeopleItemBinding
+import com.squareup.picasso.Picasso
 
-class PeopleAdapter(var mCtx: Context) {
-    fun PeopleAdapter(binding: ActivityPeopleBinding, documents: MutableList<DocumentSnapshot>) {
+class PeopleAdapter(var documents: MutableList<DocumentSnapshot>) : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
-        val people: ArrayList<String> = ArrayList()
-        for (name in documents) {
-            people.add(name.data?.get("nombre").toString())
-        }
-        val arrayAdapter = ArrayAdapter(mCtx, R.layout.simple_spinner_item, people)
-        binding.lvPeople.adapter = arrayAdapter
+    inner class ViewHolder(val binding: PeopleItemBinding) : RecyclerView.ViewHolder(binding.root)
+    private var onClickListener: OnClickListener? = null
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = PeopleItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        println("entrando 0")
+        return ViewHolder(binding)
     }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        with(holder){
+            with(documents.get(position)){
+                binding.tvName.text = documents.get(position).get("nombre").toString()
+                Picasso.get().load(documents.get(position).data?.get("imagen").toString()).into(binding.ivImage)
+            }
+        }
+        holder.itemView.setOnClickListener {
+            if (onClickListener != null) {
+                onClickListener!!.onClick(position, documents.get(position))
+            }
+        }
+    }
+
+    fun setOnClickListener(onClickListener: OnClickListener) {
+        this.onClickListener = onClickListener
+    }
+
+    interface OnClickListener {
+        fun onClick(position: Int, documents: DocumentSnapshot)
+    }
+    override fun getItemCount(): Int {
+        return documents.size
+    }
+
 }

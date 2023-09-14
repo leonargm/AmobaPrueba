@@ -7,9 +7,6 @@ import com.leonargm.amobaprueba.Profile.Interface.ProfileActivityView
 
 class ProfileActivityPresenterImpl(var view: ProfileActivityView) : ProfileActivityPresenter {
     var iterator: ProfileActivityIteratorImpl
-    override fun doLogout(context: Context, firebase: FirebaseAuth) {
-        iterator.doLogout(context, firebase)
-    }
 
     override fun onSuccess(result: String) {
         view.onSuccess(result)

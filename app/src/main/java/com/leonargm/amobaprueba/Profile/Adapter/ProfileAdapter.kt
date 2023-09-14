@@ -13,6 +13,5 @@ class ProfileAdapter (var mCtx: Context) {
             people.add(name.data?.get("nombre").toString())
         }
         val arrayAdapter = ArrayAdapter(mCtx, R.layout.simple_spinner_item, people)
-        binding.lvPeople.adapter = arrayAdapter
     }
 }
