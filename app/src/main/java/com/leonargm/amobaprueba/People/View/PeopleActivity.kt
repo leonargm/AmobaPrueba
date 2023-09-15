@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.leonargm.amobaprueba.Login.View.LoginActivity
 import com.leonargm.amobaprueba.People.Adapter.PeopleAdapter
 import com.leonargm.amobaprueba.People.Impl.PeopleActivityPresenterImpl
 import com.leonargm.amobaprueba.People.Interface.PeopleActivityView
@@ -44,7 +45,6 @@ class PeopleActivity : AppCompatActivity(), PeopleActivityView {
         firestore.collection("Personas")
             .get()
             .addOnSuccessListener {
-                println("tamanio"+ it.documents.size)
                 mAdapter = PeopleAdapter(it.documents)
                 binding.rvPeople.adapter = mAdapter
 
@@ -76,7 +76,10 @@ class PeopleActivity : AppCompatActivity(), PeopleActivityView {
     }
 
     override fun onSuccessLogout(result: String) {
-        Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
+        val intent= Intent(this, LoginActivity::class.java)
+        Toast.makeText(this,result, Toast.LENGTH_SHORT).show()
+        startActivity(intent)
+        finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

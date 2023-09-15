@@ -18,7 +18,7 @@ class PeopleActivityIteratorImpl(presenter: PeopleActivityPresenterImpl) : Peopl
         context = Constants.context
         firebaseAuth = firebase
         firebaseAuth.signOut();
-        this.presenter.onSuccessLogout(context.getResources().getString(R.string.text_error_fail))
+        this.presenter.onSuccessLogout(context.getResources().getString(R.string.text_logout))
     }
     init {
         this.presenter = presenter

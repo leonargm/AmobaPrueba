@@ -13,7 +13,6 @@ class PeopleAdapter(var documents: MutableList<DocumentSnapshot>) : RecyclerView
     private var onClickListener: OnClickListener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = PeopleItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        println("entrando 0")
         return ViewHolder(binding)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

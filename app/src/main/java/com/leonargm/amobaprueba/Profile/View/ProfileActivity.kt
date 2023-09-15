@@ -7,6 +7,8 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.leonargm.amobaprueba.Login.View.LoginActivity
+import com.leonargm.amobaprueba.People.Adapter.PeopleAdapter
+import com.leonargm.amobaprueba.Profile.Adapter.ProfileAdapter
 import com.leonargm.amobaprueba.Profile.Impl.ProfileActivityPresenterImpl
 import com.leonargm.amobaprueba.Profile.Interface.ProfileActivityView
 import com.leonargm.amobaprueba.databinding.ActivityProfileBinding
@@ -17,6 +19,7 @@ class ProfileActivity : AppCompatActivity(), ProfileActivityView {
     private lateinit var binding: ActivityProfileBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private var presenter : ProfileActivityPresenterImpl
+    private lateinit var mAdapter: ProfileAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,9 @@ class ProfileActivity : AppCompatActivity(), ProfileActivityView {
 
         var firestore: FirebaseFirestore
         firestore = FirebaseFirestore.getInstance()
+        mAdapter = ProfileAdapter(firestore)
+
+
         firestore.collection("Personas")
             .get()
             .addOnSuccessListener {
@@ -37,6 +43,9 @@ class ProfileActivity : AppCompatActivity(), ProfileActivityView {
                 binding.tvCI.setText("C.I.: " + it.documents.get(position).data?.get("CI").toString())
                 binding.tvAge.setText("Edad: " + it.documents.get(position).data?.get("edad").toString() + " Años")
                 binding.tvGender.setText("Sexo: " + it.documents.get(position).data?.get("genero").toString())
+                binding.tvMap.setOnClickListener{
+                    Toast.makeText(this, "Ver Mapa", Toast.LENGTH_SHORT).show()
+                }
             }
             .addOnFailureListener{
                 it.printStackTrace()

@@ -10,5 +10,6 @@
     <color name="colorPrimary">#5492FD</color>
     <color name="light_gray">#AFAFAF</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#3F51B5</color>
 
 </resources>
