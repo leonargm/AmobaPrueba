@@ -1,5 +1,6 @@
 package com.leonargm.amobaprueba.Profile.View
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -45,6 +46,9 @@ class ProfileActivity : AppCompatActivity(), ProfileActivityView {
         binding.tvAge.setText("Edad: " + documents.get(position).data?.get("edad").toString() + " Años")
         binding.tvGender.setText("Sexo: " + documents.get(position).data?.get("genero").toString())
         binding.tvMap.setOnClickListener{
+            val intent = Intent(applicationContext, MapProfileActivity::class.java)
+            startActivity(intent)
+            finish()
             Toast.makeText(this, "Ver Mapa", Toast.LENGTH_SHORT).show()
         }
     }

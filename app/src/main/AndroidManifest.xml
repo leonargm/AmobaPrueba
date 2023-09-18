@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AmobaPrueba">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
         <activity
             android:name=".Login.View.LoginActivity"
             android:exported="true">
@@ -26,6 +29,11 @@
             android:name=".Profile.View.ProfileActivity"
             android:exported="true"
             android:parentActivityName=".People.View.PeopleActivity">
+        </activity>
+        <activity
+            android:name=".Profile.View.MapProfileActivity"
+            android:exported="true"
+            android:parentActivityName=".Profile.View.ProfileActivity">
         </activity>
     </application>
 
