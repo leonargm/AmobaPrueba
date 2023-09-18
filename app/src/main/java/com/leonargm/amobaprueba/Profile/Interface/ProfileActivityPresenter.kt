@@ -1,8 +1,10 @@
 package com.leonargm.amobaprueba.Profile.Interface
 
-import android.content.Context
-import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
 
 interface ProfileActivityPresenter {
-    fun onSuccess(result: String)
+    fun onSuccess(documents: MutableList<DocumentSnapshot>)
+    fun onFail(errorMessage: String)
+    fun showInfoPeople(firestore: FirebaseFirestore)
 }

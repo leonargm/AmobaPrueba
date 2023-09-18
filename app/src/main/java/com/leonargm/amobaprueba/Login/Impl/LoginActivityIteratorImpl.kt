@@ -10,7 +10,6 @@ import com.leonargm.amobaprueba.Utils.Constants
 class LoginActivityIteratorImpl(presenter: LoginActivityPresenterImpl) : LoginActivityIterator {
     var presenter: LoginActivityPresenter
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var constants :Constants
 
     override fun doLogin(email: String, pass: String, firebase: FirebaseAuth) {
         firebaseAuth = firebase
@@ -31,6 +30,7 @@ class LoginActivityIteratorImpl(presenter: LoginActivityPresenterImpl) : LoginAc
             presenter.onFail(error)
         }
     }
+
     init {
         this.presenter = presenter
     }

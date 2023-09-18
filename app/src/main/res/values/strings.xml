@@ -13,4 +13,5 @@
     <string name="text_info_people">Selecciona una persona</string>
     <string name="text_btn_ticket">Compar ticket</string>
     <string name="text_map">Ver ubicación en Map</string>
+    <string name="text_firebase_fail">Ocurrio un error al obtener informacion del documento</string>
 </resources>

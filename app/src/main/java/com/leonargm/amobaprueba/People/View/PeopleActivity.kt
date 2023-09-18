@@ -25,7 +25,6 @@ class PeopleActivity : AppCompatActivity(), PeopleActivityView {
 
     private var _binding : ActivityPeopleBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var firebaseAuth: FirebaseAuth
     private var presenter : PeopleActivityPresenterImpl
     private lateinit var mAdapter: PeopleAdapter
@@ -42,26 +41,9 @@ class PeopleActivity : AppCompatActivity(), PeopleActivityView {
 
         var firestore: FirebaseFirestore
         firestore = FirebaseFirestore.getInstance()
-        firestore.collection("Personas")
-            .get()
-            .addOnSuccessListener {
-                mAdapter = PeopleAdapter(it.documents)
-                binding.rvPeople.adapter = mAdapter
 
-                mAdapter.setOnClickListener(object :
-                    PeopleAdapter.OnClickListener {
-                    override fun onClick(position: Int, documents: DocumentSnapshot) {
+        presenter.showPeople(firestore)
 
-                        val intent = Intent(applicationContext, ProfileActivity::class.java)
-                        intent.putExtra("position", position)
-                        startActivity(intent)
-                    }
-                })
-            }
-            .addOnFailureListener{
-                it.printStackTrace()
-                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
-            }
     }
 
     init {
@@ -69,10 +51,19 @@ class PeopleActivity : AppCompatActivity(), PeopleActivityView {
         Constants.context = this
     }
 
-    override fun onSuccess(data: Map<String, Any>?) {
-        val intent = Intent(this, ProfileActivity::class.java)
-        startActivity(intent)
-        finish()
+    override fun onSuccess(documents: MutableList<DocumentSnapshot>) {
+
+        mAdapter = PeopleAdapter(documents)
+        binding.rvPeople.adapter = mAdapter
+        mAdapter.setOnClickListener(object :
+            PeopleAdapter.OnClickListener {
+            override fun onClick(position: Int, documents: DocumentSnapshot) {
+                val intent = Intent(applicationContext, ProfileActivity::class.java)
+                intent.putExtra("position", position)
+                startActivity(intent)
+                finish()
+            }
+        })
     }
 
     override fun onSuccessLogout(result: String) {
@@ -82,11 +73,16 @@ class PeopleActivity : AppCompatActivity(), PeopleActivityView {
         finish()
     }
 
+    override fun onFail(errorMessage: String) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.logout -> {

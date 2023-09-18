@@ -34,13 +34,16 @@ class LoginActivity : AppCompatActivity(), LoginActivityView {
     init {
         presenter = LoginActivityPresenterImpl(this)
     }
+
     override fun onSuccess(result: String) {
         val intent = Intent(this, PeopleActivity::class.java)
         startActivity(intent)
     }
+
     override fun onFail(errorMessage: String) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
     }
+
     override fun onStart() {
         super.onStart()
         if(firebaseAuth.currentUser != null){
