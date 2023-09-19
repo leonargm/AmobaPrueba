@@ -49,7 +49,6 @@ class ProfileActivity : AppCompatActivity(), ProfileActivityView {
             val intent = Intent(applicationContext, MapProfileActivity::class.java)
             startActivity(intent)
             finish()
-            Toast.makeText(this, "Ver Mapa", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -1,6 +1,7 @@
 package com.leonargm.amobaprueba.Profile.View
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -39,6 +40,5 @@ class MapProfileActivity: AppCompatActivity(), OnMapReadyCallback {
             CameraUpdateFactory.newLatLngZoom(coordinates, 18f),4000, null
         )
     }
-
 
 }
